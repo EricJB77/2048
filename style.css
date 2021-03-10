@@ -1,15 +1,22 @@
+body {
+    background-color: black;
+    color: white;
+}
+
 .grid {
     display: flex;
     flex-wrap: wrap;
     width: 400px;
     height: 400px;
-    background-color: blue;
+    /*background-color: blue;*/
+    color:black;
 }
 
 .grid div {
     width: 100px;
     height: 100px;
-    background-color: yellow;
+    background-color: silver;
+    border: 5px;
     font-size: 60px;
     text-align: center;
     font-weight: bold;
