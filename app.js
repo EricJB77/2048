@@ -215,7 +215,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
         if (zeros === 0) {
-            resultDisplay.innerHTML = 'You Lose!'
+            //resultDisplay.innerHTML = 'You Lose!'
+            alert("You lose!")
             document.removeEventListener('keyup', control)
         }
     }

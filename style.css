@@ -1,23 +1,38 @@
 body {
     background-color: black;
-    color: white;
+    /* color: white; */
 }
 
 .grid {
     display: flex;
     flex-wrap: wrap;
-    width: 400px;
-    height: 400px;
-    /*background-color: blue;*/
+    width: 500px;
+    height: 500px;
+    /* align-items: center; */
+    /* justify-content: center; */
     color:black;
 }
 
 .grid div {
+    display: flex;
     width: 100px;
     height: 100px;
     background-color: silver;
-    border: 5px;
-    font-size: 60px;
+    font-size: 55px;
     text-align: center;
+    font-weight: bold;
+    border: solid 8px;
+    border-radius: 15px;
+    justify-content: center;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.score-container {
+    display: flex;
+    background-color: grey;
+    justify-content: space-evenly;
+    font-size: 30px;
+    color: black;
     font-weight: bold;
 }
