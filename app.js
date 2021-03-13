@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function createBoard() {
         for (let i=0 ; i < width*width ; i++) {
             square = document.createElement('div')
-            square.innerHTML = 0
+            square.innerHTML = ''
             gridDisplay.appendChild(square)
             squares.push(square)
 
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 let filteredRow = row.filter(num => num)
                 let missing = 4 - filteredRow.length
-                let zeros = Array(missing).fill(0)
+                let zeros = Array(missing).fill('')
                 let newRow = zeros.concat(filteredRow)
 
                 squares[i].innerHTML = newRow[0]
@@ -66,9 +66,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 let row = [parseInt(totalOne), parseInt(totalTwo), parseInt(totalThree), parseInt(TotalFour)]
 
                 let filteredRow = row.filter(num => num)
-                console.log(filteredRow)
                 let missing = 4 - filteredRow.length
-                let zeros = Array(missing).fill(0)
+                let zeros = Array(missing).fill('')
                 let newRow = filteredRow.concat(zeros)
 
                 squares[i].innerHTML = newRow[0]
@@ -91,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             let filteredColumn = column.filter(num => num)
             let missing = 4 - filteredColumn.length
-            let zeros = Array(missing).fill(0)
+            let zeros = Array(missing).fill('')
             let newColumn = zeros.concat(filteredColumn)
 
             squares[i].innerHTML = newColumn[0]
@@ -113,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             let filteredColumn = column.filter(num => num)
             let missing = 4 - filteredColumn.length
-            let zeros = Array(missing).fill(0)
+            let zeros = Array(missing).fill('')
             let newColumn = filteredColumn.concat(zeros)
 
             squares[i].innerHTML = newColumn[0]
@@ -126,12 +125,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function combineRow() {
         for (let i=0; i < 15; i++) {
+            if (squares[i].innerHTML == '') {
+                squares[i].innerHTML = 0
+            }
+            if (squares[i+1].innerHTML == '') {
+                squares[i+1].innerHTML = 0
+            }
             if (squares[i].innerHTML == squares[i+1].innerHTML) {
                 let combinedTotal = parseInt(squares[i].innerHTML) + parseInt(squares[i+1].innerHTML)
                 squares[i].innerHTML = combinedTotal
                 squares[i+1].innerHTML = 0
                 score += combinedTotal
                 scoreDisplay.innerHTML = score
+                console.log(combinedTotal)
             }
         }
         checkForWin()
@@ -140,6 +146,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function combineColumn() {
         for (let i=0; i < 12; i++) {
+            if (squares[i].innerHTML == '') {
+                squares[i].innerHTML = 0
+            }
+            if (squares[i+1].innerHTML == '') {
+                squares[i+1].innerHTML = 0
+            }
             if (squares[i].innerHTML == squares[i+width].innerHTML) {
                 let combinedTotal = parseInt(squares[i].innerHTML) + parseInt(squares[i+width].innerHTML)
                 squares[i].innerHTML = combinedTotal
@@ -172,6 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
         combineRow()
         moveRight()
         generate()
+        changeColor()
     }
 
     function keyLeft () {
@@ -179,6 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
         combineRow()
         moveLeft()
         generate()
+        changeColor()
     }
 
     function keyDown() {
@@ -186,6 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
         combineColumn()
         moveDown()
         generate()
+        changeColor()
     }
 
     function keyUp() {
@@ -193,6 +208,7 @@ document.addEventListener('DOMContentLoaded', () => {
         combineColumn()
         moveUp()
         generate()
+        changeColor()
     }
 
     //check for the number 2048 in the squares to win
@@ -218,6 +234,38 @@ document.addEventListener('DOMContentLoaded', () => {
             //resultDisplay.innerHTML = 'You Lose!'
             alert("You lose!")
             document.removeEventListener('keyup', control)
+        }
+    }
+
+
+    // check the color of the square and adjust according to the number (for better readability and enjoyment)
+    function changeColor() {
+        for (let i=0; i < squares.length; i++) {
+            if (squares[i].innerHTML == 0) {
+                squares[i].style.backgroundColor = "silver"
+            }else if (squares[i].innerHTML == 2) {
+                squares[i].style.backgroundColor = "lightgrey"
+            } else if (squares[i].innerHTML == 4) {
+                squares[i].style.backgroundColor = "slategrey"
+            } else if (squares[i].innerHTML == 8) {
+                squares[i].style.backgroundColor = "dimgrey"
+            } else if (squares[i].innerHTML == 8) {
+                squares[i].style.backgroundColor = "dimgrey"
+            } else if (squares[i].innerHTML == 16) {
+                squares[i].style.backgroundColor = "sandybrown"
+            } else if (squares[i].innerHTML == 32) {
+                squares[i].style.backgroundColor = "goldenrod"
+            } else if (squares[i].innerHTML == 64) {
+                squares[i].style.backgroundColor = "coral"
+            } else if (squares[i].innerHTML == 128) {
+                squares[i].style.backgroundColor = "chocolate"
+            } else if (squares[i].innerHTML == 512) {
+                squares[i].style.backgroundColor = "orangered"
+            } else if (squares[i].innerHTML == 1024) {
+                squares[i].style.backgroundColor = "firebrick"
+            } else if (squares[i].innerHTML == 2048) {
+                squares[i].style.backgroundColor = "red"
+            }
         }
     }
 
