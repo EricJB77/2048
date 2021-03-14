@@ -37,8 +37,10 @@ body {
 .score-container {
     display: flex;
     background-color: grey;
-    justify-content: space-evenly;
+    /*justify-content: space-evenly;*/
+    justify-content: center;
     font-size: 30px;
     color: black;
     font-weight: bold;
 }
+

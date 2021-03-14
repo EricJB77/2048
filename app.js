@@ -232,8 +232,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         if (zeros === 0) {
             //resultDisplay.innerHTML = 'You Lose!'
-            alert("You lose!")
+            alert("No more moves, you lose!  Thanks for playing.  Click OK to start a new game")
             document.removeEventListener('keyup', control)
+            location.reload();
         }
     }
 
