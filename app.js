@@ -249,8 +249,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 squares[i].style.backgroundColor = "slategrey"
             } else if (squares[i].innerHTML == 8) {
                 squares[i].style.backgroundColor = "dimgrey"
-            } else if (squares[i].innerHTML == 8) {
-                squares[i].style.backgroundColor = "dimgrey"
             } else if (squares[i].innerHTML == 16) {
                 squares[i].style.backgroundColor = "sandybrown"
             } else if (squares[i].innerHTML == 32) {
@@ -259,6 +257,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 squares[i].style.backgroundColor = "coral"
             } else if (squares[i].innerHTML == 128) {
                 squares[i].style.backgroundColor = "chocolate"
+            } else if (squares[i].innerHTML == 256) {
+                squares[i].style.backgroundColor = "tan"
             } else if (squares[i].innerHTML == 512) {
                 squares[i].style.backgroundColor = "orangered"
             } else if (squares[i].innerHTML == 1024) {
