@@ -179,6 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     document.addEventListener('keyup', control)
 
+    
     function keyRight() {
         moveRight()
         combineRow()
@@ -187,7 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
         changeColor()
     }
 
-    function keyLeft () {
+    function keyLeft() {
         moveLeft()
         combineRow()
         moveLeft()
@@ -239,7 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // check the color of the square and adjust according to the number (for better readability and enjoyment)
+    // check the number of the square and adjust the color accordingly (for better readability and enjoyment)
     function changeColor() {
         for (let i=0; i < squares.length; i++) {
             if (squares[i].innerHTML == 0) {
@@ -269,5 +270,48 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     }
+
+
+    // Handles the swipe events on mobile
+
+    document.addEventListener('touchstart', handleTouchStart, false);        
+    document.addEventListener('touchmove', handleTouchMove, false);
+
+    var xDown = null;                                                        
+    var yDown = null;                                                        
+
+    function handleTouchStart(evt) {                                         
+        xDown = evt.originalEvent.touches[0].clientX;                                      
+        yDown = evt.originalEvent.touches[0].clientY;                                      
+    };                                                
+
+    function handleTouchMove(evt) {
+        if ( ! xDown || ! yDown ) {
+            return;
+        }
+
+        var xUp = evt.originalEvent.touches[0].clientX;                                    
+        var yUp = evt.originalEvent.touches[0].clientY;
+
+        var xDiff = xDown - xUp;
+        var yDiff = yDown - yUp;
+
+        if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
+            if ( xDiff > 0 ) {
+                keyLeft()
+            } else {
+                keyRight()
+            }                       
+        } else {
+            if ( yDiff > 0 ) {
+                keyUp()
+            } else { 
+                keyDown()
+            }                                                                 
+        }
+        /* reset values */
+        xDown = null;
+        yDown = null;                                             
+    };
 
 })
