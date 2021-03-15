@@ -232,7 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         if (zeros === 0) {
             //resultDisplay.innerHTML = 'You Lose!'
-            alert("No more moves, you lose!  Thanks for playing.  Click OK to start a new game")
+            alert("No more moves available, game over!\n\nThanks for playing!\nClick OK to start a new game")
             document.removeEventListener('keyup', control)
             location.reload();
         }
