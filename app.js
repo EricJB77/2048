@@ -1,10 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
     const gridDisplay = document.querySelector('.grid')
     const scoreDisplay = document.getElementById('score')
-    const resultDisplay = document.getElementById('result')
+    const resultDisplay = document.getElementById('instructions')
+    const highscoreDisplay = document.getElementById('highscore')
     const width = 4
     let squares = []
     let score = 0
+    highscoreDisplay.innerHTML = localStorage.highscore
 
     //create a playing board
     function createBoard() {
@@ -216,7 +218,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function checkForWin() {
         for (let i=0; i < squares.length; i++) {
             if (squares[i].innerHTML == 2048) {
-                resultDisplay.innerHTML = 'You win!'
+                resultDisplay.innerHTML = 'You win!  Congratulations!!  Damn, you are good!  :)'
                 document.removeEventListener('keyup', control)
             }
         }
@@ -232,10 +234,14 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
         if (zeros === 0) {
-            //resultDisplay.innerHTML = 'You Lose!'
-            alert("No more moves available, game over!\n\nThanks for playing!\nClick OK to start a new game")
+            resultDisplay.innerHTML = "No more moves available, game over!\n\nThanks for playing!\nPlease reload the page to play again"
+            console.log(score,highscoreDisplay.innerHTML, localStorage.highscore)
+            if (score > highscoreDisplay.innerHTML) {
+                highscoreDisplay.innerHTML = score
+                localStorage.highscore = score
+            }
             document.removeEventListener('keyup', control)
-            location.reload();
+            // location.reload();
         }
     }
 

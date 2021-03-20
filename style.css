@@ -1,6 +1,5 @@
 body {
     background-color: black;
-    /* color: white; */
 }
 
 .grid {
@@ -8,9 +7,6 @@ body {
     flex-wrap: wrap;
     width: 500px;
     height: 500px;
-    /* align-items: center; */
-    /* justify-content: center; */
-    /* color:black; */
     position: absolute;
     top: 50%;
     left: 50%;
@@ -30,17 +26,23 @@ body {
     border: solid 8px;
     border-radius: 15px;
     justify-content: center;
-    justify-content: space-evenly;
     align-items: center;
 }
 
 .score-container {
     display: flex;
     background-color: grey;
-    /*justify-content: space-evenly;*/
-    justify-content: center;
+    justify-content: space-evenly;
     font-size: 30px;
     color: black;
     font-weight: bold;
 }
 
+#instructions {
+    display:flex;
+    flex-wrap: wrap;
+    height: 60px;
+    color: white;
+    justify-content: center;
+    align-items: center;
+}
