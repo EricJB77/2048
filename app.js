@@ -6,8 +6,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const width = 4
     let squares = []
     let score = 0
-    if (highscoreDisplay.innerHTML == undefined) {
-        highscoreDisplay.innerHTML= 0
+    if (!(localStorage.highscore > 0)) {
+        highscoreDisplay.innerHTML = 0
+        localStorage.highscore = 0
     } else highscoreDisplay.innerHTML = localStorage.highscore
 
     //create a playing board
